@@ -483,36 +483,41 @@
         <li> Cuda acceleration only available for <i>NVidia GPUs</i>.
 
   </div>
-
   <div class="overlay" id="overlay" onclick="closeOverlay()">
-    <div class="expanded" onclick="event.stopPropagation()">
+
+    <div class="expanded">
       <span class="close" onclick="closeOverlay()">×</span>
       <h2 id="title"></h2>
       <div id="details" contenteditable="true"></div>
     </div>
   </div>
+<script>
+  function expandCard(key) {
+    const overlay   = document.getElementById("overlay");
+    const main      = document.getElementById("main-content");
+    const title     = document.getElementById("title");
+    const details   = document.getElementById("details");
+    const content   = document.getElementById(`${key}-content`);
 
-  <!-- Replace whatever old <script>…</script> you had with this -->
-  <script>
-    function expandCard(key) {
-      const overlay = document.getElementById("overlay");
-      const title   = document.getElementById("title");
-      const details = document.getElementById("details");
-      const content = document.getElementById(key + "-content");
+    // set the pop-up title and content
+    title.innerText   = key.charAt(0).toUpperCase() + key.slice(1);
+    details.innerHTML = content ? content.innerHTML : '<p>No custom content set.</p>';
 
-      title.innerText   = key.charAt(0).toUpperCase() + key.slice(1);
-      details.innerHTML = content
-        ? content.innerHTML
-        : '<p>No custom content set.</p>';
+    // show overlay and freeze background scroll
+    overlay.style.display       = "flex";
+    main.classList.add("blurred");
+    document.body.style.overflow = "hidden";
+  }
 
-      overlay.style.display       = "flex";
-      document.body.style.overflow = "hidden";
-    }
+  function closeOverlay() {
+    const overlay = document.getElementById("overlay");
 
-    function closeOverlay() {
-      document.getElementById("overlay").style.display = "none";
-      document.body.style.overflow                     = "";
-    }
-  </script>
+    // hide overlay and restore scroll
+    overlay.style.display        = "none";
+    document.getElementById("main-content").classList.remove("blurred");
+    document.body.style.overflow = "";
+  }
+</script>
 
 </body>
+
