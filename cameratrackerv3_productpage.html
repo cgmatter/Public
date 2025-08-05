@@ -491,21 +491,28 @@
       <div id="details" contenteditable="true"></div>
     </div>
   </div>
-  <script>
-    function expandCard(key) {
-      const overlay = document.getElementById("overlay");
-      const main = document.getElementById("main-content");
-      const title = document.getElementById("title");
-      const details = document.getElementById("details");
-      const contentBlock = document.getElementById(`${key}-content`);
-      title.innerText = key.charAt(0).toUpperCase() + key.slice(1);
-      details.innerHTML = contentBlock ? contentBlock.innerHTML : '<p>No custom content set.</p>';
-      overlay.style.display = "flex";
-      main.classList.add("blurred");
-    }
-    function closeOverlay() {
-      document.getElementById("overlay").style.display = "none";
-      document.getElementById("main-content").classList.remove("blurred");
-    }
-  </script>
+<script>
+  function expandCard(key) {
+    const overlay = document.getElementById("overlay");
+    const main = document.getElementById("main-content");
+    const title = document.getElementById("title");
+    const details = document.getElementById("details");
+    const contentBlock = document.getElementById(`${key}-content`);
+
+    title.innerText = key.charAt(0).toUpperCase() + key.slice(1);
+    details.innerHTML = contentBlock ? contentBlock.innerHTML : '<p>No custom content set.</p>';
+
+    overlay.style.display = "flex";
+    main.classList.add("blurred");
+
+    // scroll overlay to center of viewport
+    overlay.scrollIntoView({ block: "center", inline: "center" });
+  }
+
+  function closeOverlay() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("main-content").classList.remove("blurred");
+  }
+</script>
+
 </body>
