@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CameraTracker_Help.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+  background-color:rgba(0,0,0);
+  color:white;
+  height:100%;
+  max-width:60%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+h1, h2, h3, h4, h5, h6 {
+  color: white !important;
+}
+
+a {
+  color: #4aa8ff !important;
+}
+body {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="centerucameratracker-errorsucenter"><center><u>CameraTracker Errors</u></center></h1>
+<p>All errors are a result of:</p>
+<ol>
+<li>An issue with the footage.</li>
+<li>An issue with installation/use.</li>
+</ol>
+<h2 id="%E2%9A%A0%EF%B8%8F-uerror-message-%E2%89%A0-cause-of-erroru">⚠️ <u>Error Message ≠ Cause of Error</u></h2>
+<p>Almost always your error message will say:</p>
+<blockquote>
+<p>RuntimeError: Error: Python: Traceback</p>
+</blockquote>
+<p>or</p>
+<blockquote>
+<p>Can't find scene_dense.ply</p>
+</blockquote>
+<p>Note that any issue in feature extraction, matching, solving, densifying will eventually <em>result in these same final errors messages</em>.</p>
+<p>So really:</p>
+<blockquote>
+<p>RuntimeError: Error: Python: Traceback (most recent call last):
+File &quot;/Users/yourusername/Library/Application Support/Blender/4.5/extensions/user_default/camera_tracker_macos/<strong>init</strong>.py&quot;, line 569, in invoke
+return self.execute(context)</p>
+</blockquote>
+<p><strong>tells us absolutely nothing</strong>. The problem is usually more subtle. That's why the <strong>FULL LOG</strong> is much more useful.</p>
+<h2 id="%F0%9F%8E%9E%EF%B8%8F-ufootage-issuesu">🎞️ <u>Footage Issues</u></h2>
+<p>Generally, <strong>bad footage = bad solve</strong>.</p>
+<h3 id="centerthe-best-solution-is-always-to-film-againcenter"><center>The <em>best Solution is always to film again!</em></center></h3>
+<p><strong>CameraTracker</strong> uses <a href="https://en.wikipedia.org/wiki/Photogrammetry">photogrammetry</a> under the hood, so the same principles apply. Here are the common pitfalls:</p>
+<ul>
+<li><span style="color:orange"><strong>Prominant Moving Objects</strong></span> - person in the foreground, cars, leaves and grass rustling.
+<ul>
+<li><span style="color:lightgreen">Solution: mask out these subjects.</span></li>
+</ul>
+</li>
+<li><span style="color:orange"><strong>Large Reflective Objects</strong></span> - windows, shiny floors, metal.
+<ul>
+<li><span style="color:lightgreen">Solution: mask out these reflections.</span></li>
+</ul>
+</li>
+<li><span style="color:orange"><strong>Zero Parallax</strong></span> - tripod shots, no movement, very distant scenery.
+<ul>
+<li><span style="color:lightgreen">Solution: Film with at least some <a href="https://en.wikipedia.org/wiki/Parallax">parallax</a> - try the <em>insane mode</em> matcher.</span></li>
+</ul>
+</li>
+<li><span style="color:orange"><strong>Large Featureless Surfaces</strong></span> - blank walls, greenscreens, plain backgrounds.
+<ul>
+<li><span style="color:lightgreen">Solution: Try increasing <em>features to 8000</em> and <em>overlap to 30</em>.</span></li>
+</ul>
+</li>
+<li><span style="color:orange"><strong>Low Quality Footage</strong></span> - motion blur, heavy grain, low resolution.
+<ul>
+<li><span style="color:lightgreen">Solution: Capture better footage.</span></li>
+</ul>
+</li>
+<li><span style="color:orange"><strong>Dramatic lighting changes</strong></span> - lens flares, indoor-to-outdoor, fast moving lights.
+<ul>
+<li><span style="color:lightgreen">Solution: Mask out lens flares - film on manual settings (no autoexposure).</span></li>
+</ul>
+</li>
+</ul>
+<p>You'll find that fixing these issues will almost always fix your solve.</p>
+<h2 id="%E2%9A%99%EF%B8%8F-uinstallationuse-issuesu">⚙️ <u>Installation/Use Issues</u></h2>
+<p>Go to the <a href="https://superhivemarket.com/products/camera-tracker">product page</a> for compatibility and installation instructions. Here are the most common issues:</p>
+<ul>
+<li>
+<p><span style="color:orange"><strong>Sequence In Wrong Drive</strong></span> - footage on D:/, external SSD, cloud drives.</p>
+<ul>
+<li><span style="color:lightgreen">Solution: Put the sequence on the same drive as Blender (usually C:/).</li>
+</ul>
+</li>
+<li>
+<p><span style="color:orange"><strong>Unconventional Filepaths</strong></span> - exotic characters (è,é,ê,ë), spaces, non-english characters.</p>
+<ul>
+<li><span style="color:lightgreen">Solution: Fix your filepath to avoid these cases.</li>
+</ul>
+</li>
+<li>
+<p><span style="color:orange"><strong>Wrong Sequence Names</strong></span> - 1.jpg, image1.png, frame_1.tiff.</p>
+<ul>
+<li><span style="color:lightgreen">Solution: Image sequences should always follow the convention name_0001.png, name_0002.png, etc. (can be other image formats and any name).</li>
+</ul>
+</li>
+<li>
+<p><span style="color:orange"><strong>Wrong OS</strong></span> - installing MacOS on Windows - installing Windows on MacOS.</p>
+<ul>
+<li><span style="color:lightgreen">Solution: Uninstall the addon, download the compatible version and reinstall.</li>
+</ul>
+</li>
+<li>
+<p><span style="color:orange"><strong>Blender Compatibility</strong></span> - Blender not from <a href="https://www.blender.org">Blender.org</a>, old versions, portable versions.</p>
+<ul>
+<li><span style="color:lightgreen">Solution: Only use non-portable Blender 4.3+ official builds (no Microsoft Store, etc.).</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="before-contacting-me-at-blendermarketsuperhive-see-if-you-can-resolve-the-issue-first"><em>Before contacting me (at <a href="https://superhivemarket.com/products/camera-tracker">BlenderMarket/Superhive</a>), see if you can resolve the issue first!</em></h3>
+
+</body>
+</html>
