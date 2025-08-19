@@ -12,7 +12,7 @@ body {
 	padding: 0 26px;
 	line-height: var(--vscode-markdown-line-height, 22px);
 	word-wrap: break-word;
-  background-color:rgba(0,0,0);
+  background-color:rgba(0,0,0,.9);
   color:white;
   height:100%;
   max-width:60%;
@@ -371,6 +371,35 @@ code {
           : 'default'
     });
   </script>
+
+<h1 id="centerucameratracker-errorsucenter"><center><u>CameraTracker Settings</u></center></h1>
+<img src="https://cgmatter.github.io/Public/Images/CameraTracker/cameratrackersettings.png" style="border-radius:12px; border:2px solid orange;">
+<br>
+
+<ul>
+  <li><b style="color:orange">Help</b> - Opens the documentation.</li>
+  <li><b style="color:orange">Log</b> - Used for obtaining log (cmd for Windows and terminal for Mac).</li>
+  <li><b style="color:orange">Images from Video</b> - Converts any video into an image sequence.</li>
+  <li><b style="color:orange">Mask Actor</b> - Runs rotomation on the image sequence.</li>
+  <li><b style="color:orange">Image Sequence</b> - Directory where your image sequence is.</li>
+  <li><b style="color:orange">Alpha</b> - Uses alpha of image sequence as a mask.</li>
+  <li><b style="color:orange">Undistort</b> - Undistorts the sequence for a better solve.</li>
+  <li><b style="color:orange">Densify</b> - Creates a dense colored point cloud (<i>undistort must be enabled</i>).</li>
+  <li><b style="color:orange">Zoom</b> - Enable if you zoom in/out at any point.</li>
+  <li><b style="color:orange">Shaky</b> - Better orientation calculation. Good for handheld shots.</li>
+  <li><b style="color:orange">Refine</b> - Create higher quality trackers.</li>
+  <li><b style="color:orange">Max Resolution</b> - Maximum resolution used for tracking (reduce for speedups).</li>
+  <li><b style="color:orange">Features</b> - Maximum number of features to extract per frame.</li>
+  <li><b style="color:orange">Smart Overlap</b> - Adds cross check, quadratic frame spacing, and 2-way matching.</li>
+  <li><b style="color:orange">Overlap</b> - Number of frames to look ahead for matching.</li>
+  <li><b style="color:orange">Insane Mode</b> - Uses comprehensive matching (<i>VERY SLOW</i>). Use at your own risk!</li>
+  <li><b style="color:orange">Advanced Settings</b> - Fine grain controls of the matching/solving.</li>
+  <li><b style="color:orange">Cuda</b> - Uses Cuda enabled graphics card (<i>must be an NVidia card</i>).</li>
+  <li><b style="color:orange">Clean Points</b> - Removes outliers from selected point cloud.</li>
+  <li><b style="color:orange">Invert</b> - Inverts Camera <-> Object motion.</li>
+  <li><b style="color:orange">Reset</b> - Clears database and extra files (do this before resolving).</li>
+</ul>
+
 <h1 id="centerucameratracker-errorsucenter"><center><u>CameraTracker Errors</u></center></h1>
 <p>All errors are a result of:</p>
 <ol>
